@@ -1,0 +1,130 @@
+﻿using Crypto_Genesis.Controllers;
+using Crypto_Genesis.Models;
+using HtmlAgilityPack;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Net;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Crypto_Genesis.Forms
+{
+    public partial class MarketCapCheck : template_form
+    {
+        public MarketCapCheck()
+        {
+            InitializeComponent();
+        }
+
+        private void MarketCapCheck_Load(object sender, EventArgs e)
+        {
+            updateServerList();
+        }
+
+
+        
+        private void btnAddCoin_Click(object sender, EventArgs e)
+        {
+            AddCoin_sub form = new AddCoin_sub();
+            form.Deactivate += Form_Deactivate; 
+            form.ShowDialog();
+            updateServerList();
+        }
+
+        private void Form_Deactivate(object sender, EventArgs e)
+        {
+            updateServerList();
+        }
+
+        private void updateServerList()
+        {
+            foreach (Control item in panelServerCoins.Controls)
+            {
+                if (item is Button)
+                {
+                    panelServerCoins.Controls.Remove(item);
+                    highest_Y = 10;
+                }
+            }
+          
+
+            FileController db = new FileController();
+            List<string> allLines = db.getServerFile();
+            foreach (string item in allLines)
+            {
+                ServerCurrency obj = Newtonsoft.Json.JsonConvert.DeserializeObject<ServerCurrency>(item);
+                addButton(obj.CurrencyCode);
+            }
+
+        }
+
+
+        int highest_Y = 10;
+        private void addButton(string name)
+        {
+            highest_Y += 31;
+            Button newButton = new Button();
+            newButton.Location = new Point(5, highest_Y);
+            newButton.Font = new Font("Trebuchet MS", 12, FontStyle.Bold);
+            newButton.ForeColor = Color.SeaGreen;
+            newButton.BackColor = Color.Gainsboro; 
+            newButton.Size = new Size(202, 31);
+            newButton.Text = name;
+            newButton.Click += ServerButtonClicked;
+            panelServerCoins.Controls.Add(newButton);
+        }
+
+        private void ServerButtonClicked(object sender, EventArgs e)
+        {
+            string coinCode = ((Button)sender).Text;
+            List<string> db = new FileController().getServerFile();
+            foreach (var item in db)
+            {
+                ServerCurrency obj = Newtonsoft.Json.JsonConvert.DeserializeObject<ServerCurrency>(item);
+                if (obj.CurrencyCode.Trim().ToLower()==coinCode.Trim().ToLower())
+                {
+                    string link = obj.Link;
+                    sycnServer(link,obj.Code);
+                }
+            }
+        }
+
+        private void sycnServer(string link,string Code)
+        {
+            Console.WriteLine(link);
+            HtmlWeb web = new HtmlWeb();
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12; 
+            HtmlAgilityPack.HtmlDocument doc = web.Load(link);
+            HtmlNode circulatingSupply = doc.DocumentNode.SelectNodes("//div[@class='statsValue___2iaoZ']").Last();
+            HtmlNode marketCap = doc.DocumentNode.SelectNodes("//div[@class='statsValue___2iaoZ']").First();
+
+            string mc_number = returnNumber_filter(marketCap.InnerText);
+            string cs_number = returnNumber_filter(circulatingSupply.InnerText);
+            updateForm(mc_number, cs_number,Code);
+
+        }
+
+        private void updateForm(string mc_number, string cs_number,string code)
+        {
+            decimal mc = Convert.ToDecimal(mc_number);
+            decimal cs = Convert.ToDecimal(cs_number);
+
+
+            lblMC.Text = "$ "+String.Format("{0:n0}",mc);
+            lblCS.Text = "$ "+String.Format("{0:n0}", cs );
+            lblRate.Text = String.Format("{0:n5}", mc/cs)+ " " + code;
+
+        }
+
+        private string returnNumber_filter(string tx)
+        {
+            return string.Concat(tx.Where(char.IsDigit));
+        }
+
+    }
+}
