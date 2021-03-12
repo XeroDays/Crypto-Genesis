@@ -163,7 +163,16 @@ namespace Crypto_Genesis.Forms
 
         private void txtInvested_TextChanged(object sender, EventArgs e)
         {
+            string css = returnNumber_filter(lblCS.Text).Trim();
+            string mss = returnNumber_filter(lblMC.Text).Trim();
+            if (css != string.Empty && mss != string.Empty && txtInvested.Text.Trim() != string.Empty && Convert.ToDecimal(txtInvested.Text.Trim()) > 0)
+            {
+                decimal cs = Convert.ToDecimal(css);
+                decimal mc = Convert.ToDecimal(mss);
+                decimal invested = Convert.ToDecimal(txtInvested.Text);
 
+                lblExpectedGoal.Text = "$ " + String.Format("{0:n5}", ((mc + invested) / cs));
+            }
         }
     }
 }
