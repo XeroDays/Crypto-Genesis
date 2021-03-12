@@ -227,7 +227,7 @@
             // 
             this.lblExpectedGoal.AutoSize = true;
             this.lblExpectedGoal.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExpectedGoal.ForeColor = System.Drawing.Color.Olive;
+            this.lblExpectedGoal.ForeColor = System.Drawing.Color.Red;
             this.lblExpectedGoal.Location = new System.Drawing.Point(235, 149);
             this.lblExpectedGoal.Name = "lblExpectedGoal";
             this.lblExpectedGoal.Size = new System.Drawing.Size(0, 24);

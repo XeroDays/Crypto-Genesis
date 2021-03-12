@@ -117,9 +117,24 @@ namespace Crypto_Genesis.Forms
             lblMC.Text = "$ "+String.Format("{0:n0}",mc);
             lblCS.Text = "$ "+String.Format("{0:n0}", cs );
             lblRate.Text = "$ " + String.Format("{0:n5}", mc / cs)   ;
-            txtExpected.SelectAll();
-            txtExpected.Focus();
 
+            requestFocus();
+          
+
+        }
+
+        private void requestFocus()
+        {
+            if (radioExpected.Checked)
+            {
+                txtExpected.SelectAll();
+                txtExpected.Focus();
+            }
+            else if (radioInvested.Checked)
+            {
+                txtInvested.SelectAll();
+                txtInvested.Focus();
+            } 
         }
 
         private string returnNumber_filter(string tx)
