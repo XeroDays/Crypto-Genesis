@@ -16,6 +16,9 @@ namespace Crypto_Genesis.Forms
 {
     public partial class MarketCapCheck : template_form
     {
+        int highest_Y = 10;
+
+
         public MarketCapCheck()
         {
             InitializeComponent();
@@ -23,10 +26,9 @@ namespace Crypto_Genesis.Forms
 
         private void MarketCapCheck_Load(object sender, EventArgs e)
         {
+            radioExpected.Checked = true;
             updateServerList();
         }
-
-
         
         private void btnAddCoin_Click(object sender, EventArgs e)
         {
@@ -62,9 +64,7 @@ namespace Crypto_Genesis.Forms
             }
 
         }
-
-
-        int highest_Y = 10;
+         
         private void addButton(string name)
         {
             highest_Y += 31;
@@ -113,11 +113,12 @@ namespace Crypto_Genesis.Forms
         {
             decimal mc = Convert.ToDecimal(mc_number);
             decimal cs = Convert.ToDecimal(cs_number);
-
-
+             
             lblMC.Text = "$ "+String.Format("{0:n0}",mc);
             lblCS.Text = "$ "+String.Format("{0:n0}", cs );
             lblRate.Text = "$ " + String.Format("{0:n5}", mc / cs)   ;
+            txtExpected.SelectAll();
+            txtExpected.Focus();
 
         }
 
@@ -136,8 +137,33 @@ namespace Crypto_Genesis.Forms
                 decimal cs = Convert.ToDecimal(css);
                 decimal mc = Convert.ToDecimal(mss);
                 decimal ex = Convert.ToDecimal(txtExpected.Text);
-                lblExpected.Text = "$ "+ String.Format("{0:n}", ((ex * cs) - mc));
+                lblNeedGoal.Text = "$ "+ String.Format("{0:n}", ((ex * cs) - mc));
             }
+        }
+
+        private void radios_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioExpected.Checked)
+            {
+                lblExpectedGoal.Visible = false;
+                txtExpected.Visible = true;
+                txtInvested.Visible = false;
+                label11.Text = "Investment need  :";
+                txtExpected.Focus();
+            }
+            else if (radioInvested.Checked)
+            {
+                txtInvested.Visible = true;
+                lblExpectedGoal.Visible = true;
+                txtExpected.Visible = false;
+                label11.Text = "Investment done  :";
+                txtInvested.Focus();
+            }
+        }
+
+        private void txtInvested_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
