@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Crypto_Genesis.Forms
 {
-    public partial class AddCoin_sub : template_form
+    public partial class AddCoin_sub : template_sub_form
     {
         public AddCoin_sub()
         {

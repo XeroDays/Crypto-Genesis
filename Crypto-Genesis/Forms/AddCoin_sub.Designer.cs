@@ -58,7 +58,7 @@
             this.txtCurrencyCode.Location = new System.Drawing.Point(173, 72);
             this.txtCurrencyCode.Name = "txtCurrencyCode";
             this.txtCurrencyCode.Size = new System.Drawing.Size(310, 30);
-            this.txtCurrencyCode.TabIndex = 2;
+            this.txtCurrencyCode.TabIndex = 1;
             // 
             // label2
             // 
@@ -96,7 +96,7 @@
             this.btnClipboard.Location = new System.Drawing.Point(387, 154);
             this.btnClipboard.Name = "btnClipboard";
             this.btnClipboard.Size = new System.Drawing.Size(96, 30);
-            this.btnClipboard.TabIndex = 6;
+            this.btnClipboard.TabIndex = 3;
             this.btnClipboard.Text = "Paste Clipboard";
             this.btnClipboard.UseVisualStyleBackColor = true;
             this.btnClipboard.Click += new System.EventHandler(this.btnClipboard_Click);
@@ -108,7 +108,7 @@
             this.btnSave.Location = new System.Drawing.Point(331, 194);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(152, 41);
-            this.btnSave.TabIndex = 7;
+            this.btnSave.TabIndex = 4;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -122,7 +122,8 @@
             this.btnClose.Location = new System.Drawing.Point(467, 6);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(29, 29);
-            this.btnClose.TabIndex = 8;
+            this.btnClose.TabIndex = 0;
+            this.btnClose.TabStop = false;
             this.btnClose.Text = "X";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -143,7 +144,7 @@
             this.txtCode.Location = new System.Drawing.Point(173, 118);
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(310, 30);
-            this.txtCode.TabIndex = 9;
+            this.txtCode.TabIndex = 2;
             // 
             // AddCoin_sub
             // 
@@ -162,6 +163,7 @@
             this.Controls.Add(this.txtCurrencyCode);
             this.Controls.Add(this.label1);
             this.Name = "AddCoin_sub";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddCoin_sub";
             this.Load += new System.EventHandler(this.AddCoin_sub_Load);
             this.ResumeLayout(false);

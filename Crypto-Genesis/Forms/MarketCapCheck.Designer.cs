@@ -33,7 +33,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnAddCoin = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtExpected = new System.Windows.Forms.TextBox();
             this.lblRate = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lblMC = new System.Windows.Forms.Label();
@@ -90,7 +90,8 @@
             this.btnAddCoin.Location = new System.Drawing.Point(791, 377);
             this.btnAddCoin.Name = "btnAddCoin";
             this.btnAddCoin.Size = new System.Drawing.Size(85, 32);
-            this.btnAddCoin.TabIndex = 2;
+            this.btnAddCoin.TabIndex = 0;
+            this.btnAddCoin.TabStop = false;
             this.btnAddCoin.Text = "Add +";
             this.btnAddCoin.UseVisualStyleBackColor = true;
             this.btnAddCoin.Click += new System.EventHandler(this.btnAddCoin_Click);
@@ -105,13 +106,14 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Coin Current Rate :";
             // 
-            // textBox1
+            // txtExpected
             // 
-            this.textBox1.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(219, 149);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(138, 30);
-            this.textBox1.TabIndex = 4;
+            this.txtExpected.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtExpected.Location = new System.Drawing.Point(219, 149);
+            this.txtExpected.Name = "txtExpected";
+            this.txtExpected.Size = new System.Drawing.Size(138, 30);
+            this.txtExpected.TabIndex = 1;
+            this.txtExpected.TextChanged += new System.EventHandler(this.txtExpected_TextChanged);
             // 
             // lblRate
             // 
@@ -120,9 +122,8 @@
             this.lblRate.ForeColor = System.Drawing.Color.Green;
             this.lblRate.Location = new System.Drawing.Point(215, 105);
             this.lblRate.Name = "lblRate";
-            this.lblRate.Size = new System.Drawing.Size(61, 24);
+            this.lblRate.Size = new System.Drawing.Size(0, 24);
             this.lblRate.TabIndex = 5;
-            this.lblRate.Text = "1.002";
             // 
             // label5
             // 
@@ -141,9 +142,8 @@
             this.lblMC.ForeColor = System.Drawing.Color.Olive;
             this.lblMC.Location = new System.Drawing.Point(215, 195);
             this.lblMC.Name = "lblMC";
-            this.lblMC.Size = new System.Drawing.Size(61, 24);
+            this.lblMC.Size = new System.Drawing.Size(0, 24);
             this.lblMC.TabIndex = 8;
-            this.lblMC.Text = "1.002";
             // 
             // label7
             // 
@@ -162,9 +162,8 @@
             this.lblCS.ForeColor = System.Drawing.Color.Olive;
             this.lblCS.Location = new System.Drawing.Point(215, 237);
             this.lblCS.Name = "lblCS";
-            this.lblCS.Size = new System.Drawing.Size(69, 24);
+            this.lblCS.Size = new System.Drawing.Size(0, 24);
             this.lblCS.TabIndex = 10;
-            this.lblCS.Text = "1.002s";
             // 
             // label9
             // 
@@ -180,22 +179,21 @@
             // 
             this.lblExpected.AutoSize = true;
             this.lblExpected.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExpected.ForeColor = System.Drawing.Color.Olive;
-            this.lblExpected.Location = new System.Drawing.Point(332, 304);
+            this.lblExpected.ForeColor = System.Drawing.Color.Red;
+            this.lblExpected.Location = new System.Drawing.Point(215, 304);
             this.lblExpected.Name = "lblExpected";
-            this.lblExpected.Size = new System.Drawing.Size(61, 24);
+            this.lblExpected.Size = new System.Drawing.Size(0, 24);
             this.lblExpected.TabIndex = 12;
-            this.lblExpected.Text = "1.002";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(25, 304);
+            this.label11.Location = new System.Drawing.Point(32, 304);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(301, 24);
+            this.label11.Size = new System.Drawing.Size(179, 24);
             this.label11.TabIndex = 11;
-            this.label11.Text = "Investment need to Reach goal :";
+            this.label11.Text = "Investment need  :";
             // 
             // MarketCapCheck
             // 
@@ -211,7 +209,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lblRate);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtExpected);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnAddCoin);
             this.Controls.Add(this.panelServerCoins);
@@ -232,7 +230,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnAddCoin;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtExpected;
         private System.Windows.Forms.Label lblRate;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblMC;

@@ -117,7 +117,7 @@ namespace Crypto_Genesis.Forms
 
             lblMC.Text = "$ "+String.Format("{0:n0}",mc);
             lblCS.Text = "$ "+String.Format("{0:n0}", cs );
-            lblRate.Text = String.Format("{0:n5}", mc/cs)+ " " + code;
+            lblRate.Text = "$ " + String.Format("{0:n5}", mc / cs)   ;
 
         }
 
@@ -126,5 +126,18 @@ namespace Crypto_Genesis.Forms
             return string.Concat(tx.Where(char.IsDigit));
         }
 
+        private void txtExpected_TextChanged(object sender, EventArgs e)
+        {
+            string css = returnNumber_filter(lblCS.Text).Trim();
+            string mss = returnNumber_filter(lblMC.Text).Trim();
+
+            if (css != string.Empty && mss != string.Empty && txtExpected.Text.Trim()!=string.Empty && Convert.ToDecimal(txtExpected.Text.Trim()) >0)
+            {
+                decimal cs = Convert.ToDecimal(css);
+                decimal mc = Convert.ToDecimal(mss);
+                decimal ex = Convert.ToDecimal(txtExpected.Text);
+                lblExpected.Text = "$ "+ String.Format("{0:n}", ((ex * cs) - mc));
+            }
+        }
     }
 }

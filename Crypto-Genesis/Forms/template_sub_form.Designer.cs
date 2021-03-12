@@ -1,6 +1,6 @@
 ﻿namespace Crypto_Genesis.Forms
 {
-    partial class template_form
+    partial class template_sub_form
     {
         /// <summary>
         /// Required designer variable.
@@ -30,16 +30,16 @@
         {
             this.SuspendLayout();
             // 
-            // template_form
+            // template_sub_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ClientSize = new System.Drawing.Size(589, 389);
+            this.ClientSize = new System.Drawing.Size(284, 261);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "template_form";
+            this.Name = "template_sub_form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "template_form";
+            this.Text = "template_sub_form";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BorderLessForm_MouseDown);
             this.ResumeLayout(false);
 
         }

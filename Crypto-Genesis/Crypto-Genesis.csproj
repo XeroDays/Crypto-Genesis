@@ -73,6 +73,12 @@
     <Compile Include="Forms\template_form.Designer.cs">
       <DependentUpon>template_form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\template_sub_form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\template_sub_form.Designer.cs">
+      <DependentUpon>template_sub_form.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +96,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\template_form.resx">
       <DependentUpon>template_form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\template_sub_form.resx">
+      <DependentUpon>template_sub_form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
