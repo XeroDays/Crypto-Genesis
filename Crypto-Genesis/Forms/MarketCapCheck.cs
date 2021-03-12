@@ -116,7 +116,7 @@ namespace Crypto_Genesis.Forms
              
             lblMC.Text = "$ "+String.Format("{0:n0}",mc);
             lblCS.Text = "$ "+String.Format("{0:n0}", cs );
-            lblRate.Text = "$ " + String.Format("{0:n5}", mc / cs)   ;
+            lblRate.Text = "$ " + String.Format("{0:n5}", mc / cs)  +" / "+code ;
 
             requestFocus();
           
@@ -152,7 +152,7 @@ namespace Crypto_Genesis.Forms
                 decimal cs = Convert.ToDecimal(css);
                 decimal mc = Convert.ToDecimal(mss);
                 decimal ex = Convert.ToDecimal(txtExpected.Text);
-                lblNeedGoal.Text = "$ "+ String.Format("{0:n}", ((ex * cs) - mc));
+                lblNeedGoal.Text = "$ "+ String.Format("{0:n0}", ((ex * cs) - mc));
             }
         }
 
