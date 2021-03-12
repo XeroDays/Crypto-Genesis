@@ -55,8 +55,9 @@ namespace Crypto_Genesis
         #endregion
 
         private void btnMarketCap_Click(object sender, EventArgs e)
-        { 
-          
+        {
+            MarketCapCheck obj = new MarketCapCheck();
+            uploadForm(obj);
         }
 
 
@@ -80,6 +81,10 @@ namespace Crypto_Genesis
             
         }
 
-     
+        private void btnProfitCalc_Click(object sender, EventArgs e)
+        {
+            ProfitCalculator obj = new ProfitCalculator();
+            uploadForm(obj);
+        }
     }
 }

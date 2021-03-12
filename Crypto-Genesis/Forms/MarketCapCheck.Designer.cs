@@ -113,11 +113,12 @@
             // txtExpected
             // 
             this.txtExpected.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtExpected.Location = new System.Drawing.Point(239, 148);
+            this.txtExpected.Location = new System.Drawing.Point(239, 146);
             this.txtExpected.Name = "txtExpected";
             this.txtExpected.Size = new System.Drawing.Size(176, 30);
             this.txtExpected.TabIndex = 1;
             this.txtExpected.TextChanged += new System.EventHandler(this.txtExpected_TextChanged);
+            this.txtExpected.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
             // lblRate
             // 
@@ -241,6 +242,7 @@
             this.txtInvested.Size = new System.Drawing.Size(257, 30);
             this.txtInvested.TabIndex = 16;
             this.txtInvested.TextChanged += new System.EventHandler(this.txtInvested_TextChanged);
+            this.txtInvested.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
             // MarketCapCheck
             // 

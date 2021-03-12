@@ -89,38 +89,20 @@ namespace Crypto_Genesis.Forms
                 if (obj.CurrencyCode.Trim().ToLower()==coinCode.Trim().ToLower())
                 {
                     string link = obj.Link;
-                    sycnServer(link,obj.Code);
+                    DataModel model = sysController.sycnServer(link, obj.Code);
+                    updateForm(model, coinCode);
                 }
             }
         }
-
-        private void sycnServer(string link,string Code)
+         
+        private void updateForm(DataModel model,string code)
         {
-            Console.WriteLine(link);
-            HtmlWeb web = new HtmlWeb();
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12; 
-            HtmlAgilityPack.HtmlDocument doc = web.Load(link);
-            HtmlNode circulatingSupply = doc.DocumentNode.SelectNodes("//div[@class='statsValue___2iaoZ']").Last();
-            HtmlNode marketCap = doc.DocumentNode.SelectNodes("//div[@class='statsValue___2iaoZ']").First();
-
-            string mc_number = returnNumber_filter(marketCap.InnerText);
-            string cs_number = returnNumber_filter(circulatingSupply.InnerText);
-            updateForm(mc_number, cs_number,Code);
-
-        }
-
-        private void updateForm(string mc_number, string cs_number,string code)
-        {
-            decimal mc = Convert.ToDecimal(mc_number);
-            decimal cs = Convert.ToDecimal(cs_number);
-             
+            decimal mc = model.MarketCap_decimal;
+            decimal cs = model.CirculatingSupply_decimal; 
             lblMC.Text = "$ "+String.Format("{0:n0}",mc);
             lblCS.Text = "$ "+String.Format("{0:n0}", cs );
-            lblRate.Text = "$ " + String.Format("{0:n5}", mc / cs)  +" / "+code ;
-
-            requestFocus();
-          
-
+            lblRate.Text = "$ " + String.Format("{0:n5}", mc / cs)  +" / "+ code; 
+            requestFocus(); 
         }
 
         private void requestFocus()
@@ -136,16 +118,11 @@ namespace Crypto_Genesis.Forms
                 txtInvested.Focus();
             } 
         }
-
-        private string returnNumber_filter(string tx)
-        {
-            return string.Concat(tx.Where(char.IsDigit));
-        }
-
+         
         private void txtExpected_TextChanged(object sender, EventArgs e)
         {
-            string css = returnNumber_filter(lblCS.Text).Trim();
-            string mss = returnNumber_filter(lblMC.Text).Trim();
+            string css = sysController.returnNumber_filter(lblCS.Text).Trim();
+            string mss = sysController.returnNumber_filter(lblMC.Text).Trim();
 
             if (css != string.Empty && mss != string.Empty && txtExpected.Text.Trim()!=string.Empty && Convert.ToDecimal(txtExpected.Text.Trim()) >0)
             {
@@ -178,8 +155,8 @@ namespace Crypto_Genesis.Forms
 
         private void txtInvested_TextChanged(object sender, EventArgs e)
         {
-            string css = returnNumber_filter(lblCS.Text).Trim();
-            string mss = returnNumber_filter(lblMC.Text).Trim();
+            string css = sysController.returnNumber_filter(lblCS.Text).Trim();
+            string mss = sysController.returnNumber_filter(lblMC.Text).Trim();
             if (css != string.Empty && mss != string.Empty && txtInvested.Text.Trim() != string.Empty && Convert.ToDecimal(txtInvested.Text.Trim()) > 0)
             {
                 decimal cs = Convert.ToDecimal(css);
@@ -187,6 +164,20 @@ namespace Crypto_Genesis.Forms
                 decimal invested = Convert.ToDecimal(txtInvested.Text);
 
                 lblExpectedGoal.Text = "$ " + String.Format("{0:n5}", ((mc + invested) / cs));
+            }
+        }
+         
+        private void textBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
             }
         }
     }
