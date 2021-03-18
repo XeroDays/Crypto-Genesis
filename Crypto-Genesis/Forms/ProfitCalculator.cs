@@ -95,7 +95,8 @@ namespace Crypto_Genesis.Forms
             PurchasingCoinCode = coinCode;
             updateForm();
             txtEnter.Text = String.Format("{0:n5}", model.MarketCap_decimal / model.CirculatingSupply_decimal);
-            txtEnter.SelectAll();
+            txtClose.Text = String.Format("{0:n5}", model.MarketCap_decimal / model.CirculatingSupply_decimal);
+            txtClose.SelectAll();
             txtEnter.Focus();
         }
 
@@ -138,7 +139,7 @@ namespace Crypto_Genesis.Forms
                  
 
                 decimal PL = closingOrderCoin - invested;
-
+                
                 lblPurchasedCurrency.Text = String.Format("{0:n5}", purchasedCoin) + " " + PurchasingCoinCode;
                 lblPL.Text = String.Format("{0:n2}", PL) + " " + (radioUSDT.Checked ? "USDT" : "$ Dollar");
                 if (PL<=0)

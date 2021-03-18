@@ -40,10 +40,8 @@ namespace Crypto_Genesis.Controllers
                 {
                     value += ch;
                 }
-            }
-
-            return value;
-            
+            } 
+            return value; 
         }
     }
 }
