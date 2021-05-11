@@ -136,13 +136,13 @@ namespace Crypto_Genesis.Forms
 
                 Console.WriteLine(purchasedCoin);
                 decimal closingOrderCoin = purchasedCoin * close;
-                 
+
 
                 decimal PL = closingOrderCoin - invested;
-                
+
                 lblPurchasedCurrency.Text = String.Format("{0:n5}", purchasedCoin) + " " + PurchasingCoinCode;
                 lblPL.Text = String.Format("{0:n2}", PL) + " " + (radioUSDT.Checked ? "USDT" : "$ Dollar");
-                if (PL<=0)
+                if (PL <= 0)
                 {
                     lblPL.ForeColor = Color.Red;
                 }
@@ -184,6 +184,28 @@ namespace Crypto_Genesis.Forms
         {
             lblPurchaseCoinCode1.Text = code;
             lblPurchaseCoinCode2.Text = code;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            string test = "/abc/def/ghi/";
+            string ans = doit(test);
+            MessageBox.Show("Value : " + ans);
+        }
+
+        private static string doit(string text)
+        {
+            string ans = "";
+            List<string> myList = text.Trim().Split('/').ToList();
+
+            myList.RemoveAll(s => s.Trim() == string.Empty);
+            myList.RemoveAt(0);
+            foreach (string item in myList)
+            {
+                ans += "/" + item;
+            }
+
+            return ans + "/";
         }
 
     }

@@ -56,7 +56,7 @@ namespace Crypto_Genesis
 
         private void btnMarketCap_Click(object sender, EventArgs e)
         {
-            MarketCapCheck obj = new MarketCapCheck();
+            var obj = new MarketCapCheck();
             uploadForm(obj);
         }
 
@@ -83,7 +83,13 @@ namespace Crypto_Genesis
 
         private void btnProfitCalc_Click(object sender, EventArgs e)
         {
-            ProfitCalculator obj = new ProfitCalculator();
+            var obj = new ProfitCalculator();
+            uploadForm(obj);
+        }
+
+        private void btnFuturePridict_Click(object sender, EventArgs e)
+        {
+            var obj = new FuturePridict();
             uploadForm(obj);
         }
     }

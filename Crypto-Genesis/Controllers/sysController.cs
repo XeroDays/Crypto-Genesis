@@ -17,11 +17,11 @@ namespace Crypto_Genesis.Controllers
             HtmlWeb web = new HtmlWeb();
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             HtmlAgilityPack.HtmlDocument doc = web.Load(link);
-            HtmlNode circulatingSupply = doc.DocumentNode.SelectNodes("//div[@class='statsValue___2iaoZ']").Last();
+            HtmlNode circulatingSupply = doc.DocumentNode.SelectNodes("//div[@class='maxSupplyValue___1nBaS']").Last();
             HtmlNode marketCap = doc.DocumentNode.SelectNodes("//div[@class='statsValue___2iaoZ']").First();
             string mc_number = returnNumber_filter(marketCap.InnerText);
             string cs_number = returnNumber_filter(circulatingSupply.InnerText);
-
+            System.Windows.Forms.MessageBox.Show("market cap : " + cs_number);
             DataModel model = new DataModel();
             model.CirculatingSupply = cs_number;
             model.MarketCap = mc_number;

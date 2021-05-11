@@ -63,6 +63,7 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Profit Calculator";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // btnAddCoin
             // 
@@ -73,7 +74,7 @@
             this.btnAddCoin.Location = new System.Drawing.Point(791, 377);
             this.btnAddCoin.Name = "btnAddCoin";
             this.btnAddCoin.Size = new System.Drawing.Size(85, 32);
-            this.btnAddCoin.TabIndex = 2;
+            this.btnAddCoin.TabIndex = 6;
             this.btnAddCoin.TabStop = false;
             this.btnAddCoin.Text = "Add +";
             this.btnAddCoin.UseVisualStyleBackColor = true;
@@ -119,7 +120,7 @@
             this.txtEnter.Location = new System.Drawing.Point(222, 135);
             this.txtEnter.Name = "txtEnter";
             this.txtEnter.Size = new System.Drawing.Size(176, 30);
-            this.txtEnter.TabIndex = 7;
+            this.txtEnter.TabIndex = 2;
             this.txtEnter.TextChanged += new System.EventHandler(this.txtbox_TextChanged);
             this.txtEnter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
@@ -129,7 +130,7 @@
             this.txtClose.Location = new System.Drawing.Point(222, 171);
             this.txtClose.Name = "txtClose";
             this.txtClose.Size = new System.Drawing.Size(176, 30);
-            this.txtClose.TabIndex = 7;
+            this.txtClose.TabIndex = 4;
             this.txtClose.TextChanged += new System.EventHandler(this.txtbox_TextChanged);
             this.txtClose.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
@@ -149,7 +150,7 @@
             this.txtInvested.Location = new System.Drawing.Point(222, 207);
             this.txtInvested.Name = "txtInvested";
             this.txtInvested.Size = new System.Drawing.Size(176, 30);
-            this.txtInvested.TabIndex = 7;
+            this.txtInvested.TabIndex = 5;
             this.txtInvested.TextChanged += new System.EventHandler(this.txtbox_TextChanged);
             this.txtInvested.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
@@ -239,7 +240,7 @@
             this.radioUSDT.Location = new System.Drawing.Point(222, 89);
             this.radioUSDT.Name = "radioUSDT";
             this.radioUSDT.Size = new System.Drawing.Size(55, 17);
-            this.radioUSDT.TabIndex = 16;
+            this.radioUSDT.TabIndex = 0;
             this.radioUSDT.TabStop = true;
             this.radioUSDT.Text = "USDT";
             this.radioUSDT.UseVisualStyleBackColor = true;
@@ -251,7 +252,7 @@
             this.radioDollar.Location = new System.Drawing.Point(283, 89);
             this.radioDollar.Name = "radioDollar";
             this.radioDollar.Size = new System.Drawing.Size(61, 17);
-            this.radioDollar.TabIndex = 17;
+            this.radioDollar.TabIndex = 1;
             this.radioDollar.TabStop = true;
             this.radioDollar.Text = "Dollar $";
             this.radioDollar.UseVisualStyleBackColor = true;
