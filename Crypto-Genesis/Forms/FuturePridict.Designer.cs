@@ -44,6 +44,8 @@
             this.lblPredictedPrice = new System.Windows.Forms.Label();
             this.lblPredictPriceHeader = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.cmboxInterval = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -56,7 +58,7 @@
             this.label1.Size = new System.Drawing.Size(798, 51);
             this.label1.TabIndex = 2;
             this.label1.Text = "Future Prediction";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter; 
             // 
             // label2
             // 
@@ -105,7 +107,7 @@
             this.label6.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.label6.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(211, 82);
+            this.label6.Location = new System.Drawing.Point(13, 85);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(353, 26);
             this.label6.TabIndex = 8;
@@ -117,7 +119,7 @@
             this.lblCurrentPrice.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.lblCurrentPrice.Font = new System.Drawing.Font("Microsoft Tai Le", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCurrentPrice.ForeColor = System.Drawing.Color.White;
-            this.lblCurrentPrice.Location = new System.Drawing.Point(211, 108);
+            this.lblCurrentPrice.Location = new System.Drawing.Point(13, 111);
             this.lblCurrentPrice.Name = "lblCurrentPrice";
             this.lblCurrentPrice.Size = new System.Drawing.Size(353, 35);
             this.lblCurrentPrice.TabIndex = 9;
@@ -217,15 +219,33 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold);
-            this.checkBox1.Location = new System.Drawing.Point(37, 85);
+            this.checkBox1.Location = new System.Drawing.Point(451, 85);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(102, 23);
+            this.checkBox1.Size = new System.Drawing.Size(69, 23);
             this.checkBox1.TabIndex = 18;
-            this.checkBox1.Text = "Live Speed";
+            this.checkBox1.Text = "Pause";
             this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // cmboxInterval
+            // 
+            this.cmboxInterval.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold);
+            this.cmboxInterval.FormattingEnabled = true;
+            this.cmboxInterval.Location = new System.Drawing.Point(554, 115);
+            this.cmboxInterval.Name = "cmboxInterval";
+            this.cmboxInterval.Size = new System.Drawing.Size(52, 27);
+            this.cmboxInterval.TabIndex = 19;
+            this.cmboxInterval.SelectedIndexChanged += new System.EventHandler(this.cmboxInterval_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(447, 120);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(101, 19);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "Interval (sec)";
             // 
             // FuturePridict
             // 
@@ -233,6 +253,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(798, 489);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.cmboxInterval);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.lblPredictedPrice);
             this.Controls.Add(this.lblPredictPriceHeader);
@@ -275,5 +297,7 @@
         private System.Windows.Forms.Label lblPredictedPrice;
         private System.Windows.Forms.Label lblPredictPriceHeader;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.ComboBox cmboxInterval;
+        private System.Windows.Forms.Label label4;
     }
 }

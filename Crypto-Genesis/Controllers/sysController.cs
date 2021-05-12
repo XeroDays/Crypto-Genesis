@@ -25,6 +25,8 @@ namespace Crypto_Genesis.Controllers
                 HtmlNode marketCap = doc.DocumentNode.SelectNodes("//div[@class='statsValue___2iaoZ']").First();
                 string mc_number = returnNumber_filter(marketCap.InnerText);
                 string cs_number = returnNumber_filter(circulatingSupply.InnerText);
+
+                string cs_number_Calc = verifyAddUpSymbol(circulatingSupply2.InnerText);
                 string cs_number2 = returnNumber_filter(circulatingSupply2.InnerText);
              
                 model.CirculatingSupply = cs_number2;//(Convert.ToDecimal(cs_number)> Convert.ToDecimal(cs_number2))? cs_number:cs_number2;
@@ -39,7 +41,24 @@ namespace Crypto_Genesis.Controllers
 
             return model;
         }
-         
+
+        private static string verifyAddUpSymbol(string innerText)
+        {
+
+            return "";
+        }
+
+        public static Task<DataModel> sycnServer_Async(string link,string code)
+        {
+            TaskCompletionSource<DataModel> taskCompletion = new TaskCompletionSource<DataModel>();
+            Task.Run(() =>
+            {
+                DataModel model = sysController.sycnServer(link, code);
+                taskCompletion.SetResult(model);
+            });
+            return taskCompletion.Task;
+        }
+
         public static string returnNumber_filter(string tx)
         {
             string value="";
@@ -61,14 +80,13 @@ namespace Crypto_Genesis.Controllers
 	    {
             string final = "";
             string txt = lbl.Text;
-            while(txt.Last().Equals("0"))
+            while (txt.Last().Equals('0'))
             {
-                txt=  txt.Remove(txt.Length);
-               
+                txt = txt.Remove(txt.Length - 1); 
             }
             final = txt;
             lbl.Text = final;
 
-	    }
+        }
     }
 }
