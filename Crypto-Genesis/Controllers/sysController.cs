@@ -1,9 +1,12 @@
-﻿using Crypto_Genesis.Models;
+﻿using BinanceExchange.API.Models.Response;
+using Crypto_Genesis.Models;
 using HtmlAgilityPack;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -27,7 +30,7 @@ namespace Crypto_Genesis.Controllers
                 string cs_number = returnNumber_filter(circulatingSupply.InnerText);
 
                 string cs_number_Calc = verifyAddUpSymbol(circulatingSupply2.InnerText);
-                string cs_number2 = returnNumber_filter(circulatingSupply2.InnerText);
+                string cs_number2 = returnNumber_filter(cs_number_Calc);
              
                 model.CirculatingSupply = cs_number2;//(Convert.ToDecimal(cs_number)> Convert.ToDecimal(cs_number2))? cs_number:cs_number2;
                 model.MarketCap = mc_number;
@@ -35,8 +38,7 @@ namespace Crypto_Genesis.Controllers
             }
             catch (Exception)
             {
-
-                
+                 
             } 
 
             return model;
@@ -44,8 +46,18 @@ namespace Crypto_Genesis.Controllers
 
         private static string verifyAddUpSymbol(string innerText)
         {
-
-            return "";
+            if (!innerText.Contains(','))
+            {
+                string f1 = innerText.Split(' ')[0];
+                if (f1.Last().Equals('B'))
+                {
+                    string f2 = f1.Replace("B", "");
+                    decimal f3 = Convert.ToDecimal(f2);
+                    string f4 = (f3 * 1000000000M).ToString();
+                    return f4;
+                }
+            }
+            return innerText;
         }
 
         public static Task<DataModel> sycnServer_Async(string link,string code)
@@ -80,13 +92,25 @@ namespace Crypto_Genesis.Controllers
 	    {
             string final = "";
             string txt = lbl.Text;
-            while (txt.Last().Equals('0'))
-            {
-                txt = txt.Remove(txt.Length - 1); 
-            }
-            final = txt;
+            final = removeZeroOnLast(txt);
             lbl.Text = final;
 
         }
+
+        public static string removeZeroOnLast(string txt)
+	    {
+            string final = "";
+            while (txt.Last().Equals('0'))
+            {
+                txt = txt.Remove(txt.Length - 1);
+            }
+            final = txt;
+            return final;
+        }
+
+
+     
+
     }
+     
 }

@@ -46,6 +46,14 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.cmboxInterval = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cmbOrderBookLimit = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -55,10 +63,11 @@
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(798, 51);
+            this.label1.Size = new System.Drawing.Size(813, 51);
             this.label1.TabIndex = 2;
             this.label1.Text = "Future Prediction";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter; 
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -170,10 +179,11 @@
             // 
             // lblReleaseInsert
             // 
+            this.lblReleaseInsert.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblReleaseInsert.BackColor = System.Drawing.Color.IndianRed;
             this.lblReleaseInsert.Font = new System.Drawing.Font("Microsoft Tai Le", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblReleaseInsert.ForeColor = System.Drawing.Color.White;
-            this.lblReleaseInsert.Location = new System.Drawing.Point(12, 402);
+            this.lblReleaseInsert.Location = new System.Drawing.Point(44, 467);
             this.lblReleaseInsert.Name = "lblReleaseInsert";
             this.lblReleaseInsert.Size = new System.Drawing.Size(353, 35);
             this.lblReleaseInsert.TabIndex = 15;
@@ -182,10 +192,11 @@
             // 
             // lblReleaseInsertHeader
             // 
+            this.lblReleaseInsertHeader.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblReleaseInsertHeader.BackColor = System.Drawing.Color.IndianRed;
             this.lblReleaseInsertHeader.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblReleaseInsertHeader.ForeColor = System.Drawing.Color.White;
-            this.lblReleaseInsertHeader.Location = new System.Drawing.Point(12, 376);
+            this.lblReleaseInsertHeader.Location = new System.Drawing.Point(44, 441);
             this.lblReleaseInsertHeader.Name = "lblReleaseInsertHeader";
             this.lblReleaseInsertHeader.Size = new System.Drawing.Size(353, 26);
             this.lblReleaseInsertHeader.TabIndex = 14;
@@ -194,10 +205,11 @@
             // 
             // lblPredictedPrice
             // 
+            this.lblPredictedPrice.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblPredictedPrice.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.lblPredictedPrice.Font = new System.Drawing.Font("Microsoft Tai Le", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPredictedPrice.ForeColor = System.Drawing.Color.White;
-            this.lblPredictedPrice.Location = new System.Drawing.Point(380, 402);
+            this.lblPredictedPrice.Location = new System.Drawing.Point(412, 467);
             this.lblPredictedPrice.Name = "lblPredictedPrice";
             this.lblPredictedPrice.Size = new System.Drawing.Size(353, 35);
             this.lblPredictedPrice.TabIndex = 17;
@@ -206,10 +218,11 @@
             // 
             // lblPredictPriceHeader
             // 
+            this.lblPredictPriceHeader.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblPredictPriceHeader.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.lblPredictPriceHeader.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPredictPriceHeader.ForeColor = System.Drawing.Color.White;
-            this.lblPredictPriceHeader.Location = new System.Drawing.Point(380, 376);
+            this.lblPredictPriceHeader.Location = new System.Drawing.Point(412, 441);
             this.lblPredictPriceHeader.Name = "lblPredictPriceHeader";
             this.lblPredictPriceHeader.Size = new System.Drawing.Size(353, 26);
             this.lblPredictPriceHeader.TabIndex = 16;
@@ -220,7 +233,7 @@
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold);
-            this.checkBox1.Location = new System.Drawing.Point(451, 85);
+            this.checkBox1.Location = new System.Drawing.Point(508, 60);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(69, 23);
             this.checkBox1.TabIndex = 18;
@@ -231,9 +244,9 @@
             // 
             this.cmboxInterval.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold);
             this.cmboxInterval.FormattingEnabled = true;
-            this.cmboxInterval.Location = new System.Drawing.Point(554, 115);
+            this.cmboxInterval.Location = new System.Drawing.Point(508, 124);
             this.cmboxInterval.Name = "cmboxInterval";
-            this.cmboxInterval.Size = new System.Drawing.Size(52, 27);
+            this.cmboxInterval.Size = new System.Drawing.Size(91, 27);
             this.cmboxInterval.TabIndex = 19;
             this.cmboxInterval.SelectedIndexChanged += new System.EventHandler(this.cmboxInterval_SelectedIndexChanged);
             // 
@@ -241,18 +254,98 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(447, 120);
+            this.label4.Location = new System.Drawing.Point(401, 129);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(101, 19);
             this.label4.TabIndex = 20;
             this.label4.Text = "Interval (sec)";
+            // 
+            // label5
+            // 
+            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label5.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(0, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(428, 19);
+            this.label5.TabIndex = 21;
+            this.label5.Text = "Order book Analysis";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label12);
+            this.panel1.Controls.Add(this.label10);
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Location = new System.Drawing.Point(371, 171);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(430, 231);
+            this.panel1.TabIndex = 22;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Green;
+            this.label7.Location = new System.Drawing.Point(4, 56);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(102, 16);
+            this.label7.TabIndex = 22;
+            this.label7.Text = "Amount Asked  : ";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(374, 94);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(129, 19);
+            this.label8.TabIndex = 24;
+            this.label8.Text = "Order Book Limit";
+            // 
+            // cmbOrderBookLimit
+            // 
+            this.cmbOrderBookLimit.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold);
+            this.cmbOrderBookLimit.FormattingEnabled = true;
+            this.cmbOrderBookLimit.Location = new System.Drawing.Point(508, 89);
+            this.cmbOrderBookLimit.Name = "cmbOrderBookLimit";
+            this.cmbOrderBookLimit.Size = new System.Drawing.Size(91, 27);
+            this.cmbOrderBookLimit.TabIndex = 23;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Green;
+            this.label10.Location = new System.Drawing.Point(3, 24);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(140, 19);
+            this.label10.TabIndex = 23;
+            this.label10.Text = "Buying Bids : 0000";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Brown;
+            this.label12.Location = new System.Drawing.Point(253, 24);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(140, 19);
+            this.label12.TabIndex = 24;
+            this.label12.Text = "Selling Asks : 0000";
             // 
             // FuturePridict
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(798, 489);
+            this.ClientSize = new System.Drawing.Size(813, 511);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.cmbOrderBookLimit);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cmboxInterval);
             this.Controls.Add(this.checkBox1);
@@ -274,6 +367,8 @@
             this.Name = "FuturePridict";
             this.Text = "FuturePridict";
             this.Load += new System.EventHandler(this.FuturePridict_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -299,5 +394,12 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.ComboBox cmboxInterval;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox cmbOrderBookLimit;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label10;
     }
 }
