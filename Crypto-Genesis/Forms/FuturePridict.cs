@@ -15,9 +15,10 @@ namespace Crypto_Genesis.Forms
     public partial class FuturePridict : template_form
     {
 
-        string link = "https://coinmarketcap.com/currencies/axie-infinity/";
+        //string link = "https://coinmarketcap.com/currencies/axie-infinity/";
+        string link = "https://coinmarketcap.com/currencies/DOGECOIN/";
         string TargetSymbol = "";
-        string coin1 = "AXS";
+        string coin1 = "DOGE";
         string coin2 = "USDT";
         DispatcherTimer dispatcherTimer;
         binanceApiController myApi;
@@ -30,7 +31,8 @@ namespace Crypto_Genesis.Forms
             myApi = new binanceApiController();
             DataModel _model = sysController.sycnServer(link, "Unknown");
             model = _model;
-
+            label13.Text = "Available " + coin2;
+            label15.Text = "Available " + coin1;
             cmboxInterval.Items.Add(1);
             cmboxInterval.Items.Add(2);
             cmboxInterval.Items.Add(3);
@@ -90,6 +92,10 @@ namespace Crypto_Genesis.Forms
         private async void updateAvailableCurrency()
         {
             List<BalanceResponse> mylist = await myApi.GetCurrentBalance();
+
+           
+
+
             foreach (BalanceResponse item in mylist)
             {
                 if (item.Asset.ToLower().Equals(coin1.ToLower()))

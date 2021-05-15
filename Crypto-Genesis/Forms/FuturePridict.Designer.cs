@@ -80,6 +80,9 @@
             this.label13 = new System.Windows.Forms.Label();
             this.lblAvailableCrypto = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
+            this.btnStart = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panelBids.SuspendLayout();
             this.panelAsks.SuspendLayout();
@@ -212,7 +215,7 @@
             this.lblReleaseInsert.BackColor = System.Drawing.Color.IndianRed;
             this.lblReleaseInsert.Font = new System.Drawing.Font("Microsoft Tai Le", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblReleaseInsert.ForeColor = System.Drawing.Color.White;
-            this.lblReleaseInsert.Location = new System.Drawing.Point(44, 514);
+            this.lblReleaseInsert.Location = new System.Drawing.Point(44, 507);
             this.lblReleaseInsert.Name = "lblReleaseInsert";
             this.lblReleaseInsert.Size = new System.Drawing.Size(353, 35);
             this.lblReleaseInsert.TabIndex = 15;
@@ -225,7 +228,7 @@
             this.lblReleaseInsertHeader.BackColor = System.Drawing.Color.IndianRed;
             this.lblReleaseInsertHeader.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblReleaseInsertHeader.ForeColor = System.Drawing.Color.White;
-            this.lblReleaseInsertHeader.Location = new System.Drawing.Point(44, 488);
+            this.lblReleaseInsertHeader.Location = new System.Drawing.Point(44, 481);
             this.lblReleaseInsertHeader.Name = "lblReleaseInsertHeader";
             this.lblReleaseInsertHeader.Size = new System.Drawing.Size(353, 26);
             this.lblReleaseInsertHeader.TabIndex = 14;
@@ -238,7 +241,7 @@
             this.lblPredictedPrice.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.lblPredictedPrice.Font = new System.Drawing.Font("Microsoft Tai Le", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPredictedPrice.ForeColor = System.Drawing.Color.White;
-            this.lblPredictedPrice.Location = new System.Drawing.Point(412, 514);
+            this.lblPredictedPrice.Location = new System.Drawing.Point(412, 507);
             this.lblPredictedPrice.Name = "lblPredictedPrice";
             this.lblPredictedPrice.Size = new System.Drawing.Size(353, 35);
             this.lblPredictedPrice.TabIndex = 17;
@@ -251,7 +254,7 @@
             this.lblPredictPriceHeader.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.lblPredictPriceHeader.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPredictPriceHeader.ForeColor = System.Drawing.Color.White;
-            this.lblPredictPriceHeader.Location = new System.Drawing.Point(412, 488);
+            this.lblPredictPriceHeader.Location = new System.Drawing.Point(412, 481);
             this.lblPredictPriceHeader.Name = "lblPredictPriceHeader";
             this.lblPredictPriceHeader.Size = new System.Drawing.Size(353, 26);
             this.lblPredictPriceHeader.TabIndex = 16;
@@ -641,19 +644,19 @@
             this.lblAvailableUSDT.ForeColor = System.Drawing.Color.White;
             this.lblAvailableUSDT.Location = new System.Drawing.Point(18, 355);
             this.lblAvailableUSDT.Name = "lblAvailableUSDT";
-            this.lblAvailableUSDT.Size = new System.Drawing.Size(140, 35);
+            this.lblAvailableUSDT.Size = new System.Drawing.Size(169, 35);
             this.lblAvailableUSDT.TabIndex = 39;
             this.lblAvailableUSDT.Text = "0000";
             this.lblAvailableUSDT.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label13
             // 
-            this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.label13.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.White;
             this.label13.Location = new System.Drawing.Point(18, 329);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(140, 26);
+            this.label13.Size = new System.Drawing.Size(169, 26);
             this.label13.TabIndex = 38;
             this.label13.Text = "Available USDT";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -663,24 +666,55 @@
             this.lblAvailableCrypto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.lblAvailableCrypto.Font = new System.Drawing.Font("Microsoft Tai Le", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAvailableCrypto.ForeColor = System.Drawing.Color.White;
-            this.lblAvailableCrypto.Location = new System.Drawing.Point(164, 355);
+            this.lblAvailableCrypto.Location = new System.Drawing.Point(193, 355);
             this.lblAvailableCrypto.Name = "lblAvailableCrypto";
-            this.lblAvailableCrypto.Size = new System.Drawing.Size(140, 35);
+            this.lblAvailableCrypto.Size = new System.Drawing.Size(158, 35);
             this.lblAvailableCrypto.TabIndex = 41;
             this.lblAvailableCrypto.Text = "0000";
             this.lblAvailableCrypto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label15
             // 
-            this.label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.label15.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(164, 329);
+            this.label15.Location = new System.Drawing.Point(193, 329);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(140, 26);
+            this.label15.Size = new System.Drawing.Size(158, 26);
             this.label15.TabIndex = 40;
             this.label15.Text = "Available Crypto";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnStart
+            // 
+            this.btnStart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStart.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnStart.ForeColor = System.Drawing.Color.White;
+            this.btnStart.Location = new System.Drawing.Point(18, 393);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(117, 81);
+            this.btnStart.TabIndex = 42;
+            this.btnStart.Text = "Start";
+            this.btnStart.UseVisualStyleBackColor = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(141, 411);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(35, 13);
+            this.label7.TabIndex = 43;
+            this.label7.Text = "label7";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(551, 542);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(213, 13);
+            this.label14.TabIndex = 44;
+            this.label14.Text = "( Could be wrong due to multiple API Data. )";
             // 
             // FuturePridict
             // 
@@ -688,6 +722,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(813, 558);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.btnStart);
             this.Controls.Add(this.lblAvailableCrypto);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.lblAvailableUSDT);
@@ -784,5 +821,8 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label lblAvailableCrypto;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label14;
     }
 }
