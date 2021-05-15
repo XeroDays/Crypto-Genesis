@@ -72,12 +72,20 @@ namespace Crypto_Genesis
                 return;
             }
              
-            panelDashboard.Controls.Clear(); 
+           
+            foreach (Control item in panelDashboard.Controls)
+            {
+                if (item is Form)
+                { 
+                        ((Form)item).Close(); 
+                }
+            }
+
+            panelDashboard.Controls.Clear();
             myform.TopLevel = false;
             panelDashboard.Controls.Add(myform);
             myform.Dock = DockStyle.Fill;
             myform.Show();
-            
             
         }
 

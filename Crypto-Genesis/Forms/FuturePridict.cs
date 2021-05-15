@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Windows.Threading;
 
 namespace Crypto_Genesis.Forms
@@ -21,10 +22,7 @@ namespace Crypto_Genesis.Forms
         DataModel model; // this contain detail from the CoinMarketCap about the Circulating Supply and MArketCap
 
         public FuturePridict()
-        {
-
-
-
+        { 
             InitializeComponent();
             myApi = new binanceApiController();
             DataModel _model = sysController.sycnServer(link, "Unknown");
@@ -34,8 +32,14 @@ namespace Crypto_Genesis.Forms
             cmboxInterval.Items.Add(2);
             cmboxInterval.Items.Add(3);
             cmboxInterval.Items.Add(4);
+            cmboxInterval.Items.Add(5);
+            cmboxInterval.Items.Add(10);
+            cmboxInterval.Items.Add(15);
+            cmboxInterval.Items.Add(20);
+            cmboxInterval.Items.Add(30);
+            cmboxInterval.Items.Add(60);
             cmboxInterval.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-
+           
             cmbOrderBookLimit.Items.Add(100);
             cmbOrderBookLimit.Items.Add(500);
             cmbOrderBookLimit.Items.Add(1000);
@@ -43,7 +47,7 @@ namespace Crypto_Genesis.Forms
             cmbOrderBookLimit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 
             cmbOrderBookLimit.SelectedItem = 100;
-
+            radioPrice.Checked = true;
         }
 
         private async void updateForm()
@@ -68,6 +72,8 @@ namespace Crypto_Genesis.Forms
 
                 }
 
+                updateAvailableCurrency();
+
                 sysController.removeZeroOnLast(ref lblPredictedPrice);
             }
             catch (Exception)
@@ -78,12 +84,18 @@ namespace Crypto_Genesis.Forms
 
         }
 
+        private void updateAvailableCurrency()
+        {
+            
+        }
+
         private void FuturePridict_Load(object sender, EventArgs e)
         {
             dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
             dispatcherTimer.Start();
+            cmboxInterval.SelectedItem = 1;
         }
 
         private void dispatcherTimer_Tick(object sender, EventArgs e)
@@ -166,67 +178,112 @@ namespace Crypto_Genesis.Forms
         private void updateOrderBookAnalysis(OrderBookResponse ssss)
         {
             List<TradeResponse> AsksList = new List<TradeResponse>();
-            AsksList = ssss.Asks.OrderBy(s => s.Price).ToList();
-
+            
             List<TradeResponse> BidList = new List<TradeResponse>();
-            BidList = ssss.Bids.OrderBy(s => s.Price).ToList();
 
-            label10.Text = "Buying Asks  : " + AsksList.Count;
-            label12.Text = "Selling Bids : " + BidList.Count;
-
-            List<decimal> prices = new List<decimal>();
-            foreach (TradeResponse item in ssss.Asks)
+            if (radioPrice.Checked)
             {
-                prices.Add(item.Price);
+                AsksList = ssss.Asks.OrderBy(s => s.Price).ToList();
+                BidList = ssss.Bids.OrderBy(s => s.Price).ToList();
+            }
+            else
+            {
+                AsksList = ssss.Asks.OrderBy(s => s.Quantity).ToList();
+                BidList = ssss.Bids.OrderBy(s => s.Quantity).ToList();
+            }
+          
+
+            label10.Text = "Selling Asks  : " + AsksList.Count;
+            label12.Text = "Buying Bids : " + BidList.Count;
+
+            int dividerAsks = AsksList.Count / 10;
+            int dividerBids = BidList.Count / 10;
+
+            var dividedlistAsks = new List<List<TradeResponse>>();
+            var dividedlistBids = new List<List<TradeResponse>>();
+
+
+
+            for (int i = 0; i < AsksList.Count; i += dividerAsks)
+            {
+                dividedlistAsks.Add(AsksList.GetRange(i, Math.Min(dividerAsks, AsksList.Count - i)));
             }
 
-            prices.Sort();
-
-            decimal pri = 0m;
-            string all ="";
-            int count = 0;
-            for (int i = 0; i < prices.Count; i++)
+            for (int i = 0; i < BidList.Count; i += dividerBids)
             {
-                count++;
-                pri += prices[i];
+                dividedlistBids.Add(BidList.GetRange(i, Math.Min(dividerBids, BidList.Count - i)));
+            }
 
-                if ((i != 0 && i % 20 == 0) || i == prices.Count - 1)
+            int panelNumber = 1;
+            foreach (List<TradeResponse> item in dividedlistAsks)
+            {
+                decimal avg=0m;
+                decimal qty = 0m ;
+                for (int i = 0; i < item.Count; i++)
                 {
-                    all += pri / count + "\n";
-                    count = 0;
-                    pri = 0m;
+                    avg += item[i].Price;
+                    qty += item[i].Quantity;
                 }
+
+                IEnumerable<Label> tests = panelAsks.Controls.OfType<Label>();
+                Label mylbl = tests.Where(lbl=>lbl.Name.Contains("lblask"+ panelNumber)).FirstOrDefault();
+
+                string txt = "";
+                txt = panelNumber + ") " + ((panelNumber == 10) ? "" : "   ");
+                txt += sysController.removeZeroOnLast((avg / item.Count).ToString("#,##0.000000"));
+
+                while (txt.Length <= 17)
+                {
+                    txt += " ";
+                }
+                txt += "=>  " + sysController.removeZeroOnLast(qty.ToString("#,##0.000000"));
+
+                if (mylbl != null)
+                {
+                    mylbl.Text = txt;
+
+                }
+                panelNumber++;
             }
 
 
-            label7.Text = all;
-            //int divide =( ssss.Asks.Count/5)-1;
-            //int count = 0;
-            //decimal avg1=0m;
-            //decimal quanityAvg = 0m;
-            //string res="";
-            //for (int i = 0; i < ssss.Asks.Count; i++)
-            //{
-            //    avg1 += prices[i];
-            //    quanityAvg += ssss.Asks[i].Quantity * prices[i];
-            //    if (count>=divide)
-            //    {
-            //        count = 0;
-            //         res+= "Price: " + avg1 / divide + " Quantity : "+ sysController.removeZeroOnLast(quanityAvg.ToString("#,##0.00")) +"\n";
-            //        avg1 = 0;
-            //        quanityAvg = 0;
-            //    }
+            panelNumber = 1;
+            foreach (List<TradeResponse> item in dividedlistBids)
+            {
+                decimal avg = 0m;
+                decimal qty = 0m;
+                for (int i = 0; i < item.Count; i++)
+                {
+                    avg += item[i].Price;
+                    qty += item[i].Quantity;
+                }
 
-            //    count++;
-            //}
-            //label5.Text = res;
-            //Console.WriteLine(avg1/100);
+                IEnumerable<Label> tests = panelBids.Controls.OfType<Label>();
+                Label mylbl = tests.Where(lbl => lbl.Name.Equals("lblbid" + panelNumber)).First();
+
+                string txt = "";
+                txt = panelNumber + ") " + ((panelNumber == 10) ? "" : "   ");
+                txt += sysController.removeZeroOnLast((avg / item.Count).ToString("#,##0.000000"));
+
+                while (txt.Length<=17)
+                {
+                    txt += " ";
+                }
+                txt += "=>  " + sysController.removeZeroOnLast(qty.ToString("#,##0.000000"));
+
+                if (mylbl != null)
+                {
+                    mylbl.Text = txt;
+                   
+                }
+                panelNumber++;
+            }
 
 
         }
 
         private void cmboxInterval_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        {  
             dispatcherTimer.Interval.Subtract(dispatcherTimer.Interval);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, (int)cmboxInterval.SelectedItem);
         }
@@ -238,5 +295,14 @@ namespace Crypto_Genesis.Forms
 
 
         }
+         
+        private void FuturePridict_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            dispatcherTimer.Dispatcher.BeginInvokeShutdown(DispatcherPriority.Normal);
+            dispatcherTimer.Stop();
+        }
+         
     }
+
+    
 }

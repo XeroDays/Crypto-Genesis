@@ -67,9 +67,7 @@ namespace Crypto_Genesis.Controllers
             return item;
         }
 
-
-       
-
+         
         /// <summary>
         /// This send request to binance api requesting ORder boook
         /// </summary>
@@ -152,6 +150,13 @@ namespace Crypto_Genesis.Controllers
             // request.Symbol = ssss;
 
             var orderss = await ss.GetCurrentOpenOrders(request);
+        }
+
+        public async Task<List<BalanceResponse>> GetCurrentBalance()
+        {
+            var test = await ss.GetAccountInformation();
+
+            return test.Balances; 
         }
     }
 }
