@@ -16,7 +16,9 @@ namespace Crypto_Genesis.Forms
     {
 
         string link = "https://coinmarketcap.com/currencies/axie-infinity/";
-        string TargetSymbol = "AXSUSDT";
+        string TargetSymbol = "";
+        string coin1 = "AXS";
+        string coin2 = "USDT";
         DispatcherTimer dispatcherTimer;
         binanceApiController myApi;
         DataModel model; // this contain detail from the CoinMarketCap about the Circulating Supply and MArketCap
@@ -24,6 +26,7 @@ namespace Crypto_Genesis.Forms
         public FuturePridict()
         { 
             InitializeComponent();
+            TargetSymbol = coin1 + coin2;
             myApi = new binanceApiController();
             DataModel _model = sysController.sycnServer(link, "Unknown");
             model = _model;
@@ -84,9 +87,22 @@ namespace Crypto_Genesis.Forms
 
         }
 
-        private void updateAvailableCurrency()
+        private async void updateAvailableCurrency()
         {
-            
+            List<BalanceResponse> mylist = await myApi.GetCurrentBalance();
+            foreach (BalanceResponse item in mylist)
+            {
+                if (item.Asset.ToLower().Equals(coin1.ToLower()))
+                {
+                    lblAvailableCrypto.Text = item.Free + "";
+                  
+                }
+
+                if (item.Asset.ToLower().Equals(coin2.ToLower()))
+                {
+                    lblAvailableUSDT.Text = item.Free + "";
+                }
+            }
         }
 
         private void FuturePridict_Load(object sender, EventArgs e)

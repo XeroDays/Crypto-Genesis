@@ -636,7 +636,7 @@
             // 
             // lblAvailableUSDT
             // 
-            this.lblAvailableUSDT.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.lblAvailableUSDT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.lblAvailableUSDT.Font = new System.Drawing.Font("Microsoft Tai Le", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAvailableUSDT.ForeColor = System.Drawing.Color.White;
             this.lblAvailableUSDT.Location = new System.Drawing.Point(18, 355);
@@ -648,7 +648,7 @@
             // 
             // label13
             // 
-            this.label13.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label13.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.White;
             this.label13.Location = new System.Drawing.Point(18, 329);
@@ -660,7 +660,7 @@
             // 
             // lblAvailableCrypto
             // 
-            this.lblAvailableCrypto.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.lblAvailableCrypto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.lblAvailableCrypto.Font = new System.Drawing.Font("Microsoft Tai Le", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAvailableCrypto.ForeColor = System.Drawing.Color.White;
             this.lblAvailableCrypto.Location = new System.Drawing.Point(164, 355);
@@ -672,7 +672,7 @@
             // 
             // label15
             // 
-            this.label15.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label15.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.White;
             this.label15.Location = new System.Drawing.Point(164, 329);
