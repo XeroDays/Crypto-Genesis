@@ -17,12 +17,14 @@ namespace Crypto_Genesis.Forms
 
         string link = "https://coinmarketcap.com/currencies/axie-infinity/";
         // string link = "https://coinmarketcap.com/currencies/DOGECOIN/";
-        string TargetSymbol = "";
+        string TargetSymbol = "";   // this is used to combine both coins and make a symbol for aPI
         string coin1 = "AXS";
         string coin2 = "USDT";
         DispatcherTimer dispatcherTimer;
         binanceApiController myApi;
         DataModel model; // this contain detail from the CoinMarketCap about the Circulating Supply and MArketCap
+
+        int divideOrderBookInParts = 10; // this is uuse to get number for diving the ordere book list into peices
 
         public FuturePridict()
         {
@@ -49,7 +51,10 @@ namespace Crypto_Genesis.Forms
             cmbOrderBookLimit.SelectedItem = 100;
             radioPrice.Checked = true;
 
-            
+            for (int i = 0; i < divideOrderBookInParts; i++)
+            {
+
+            }
         }
 
         private async void updateForm()
@@ -144,10 +149,7 @@ namespace Crypto_Genesis.Forms
                 AskSum += item.Quantity * item.Price;
                 cc++;
             }
-
-            DateTime.Now.AddTicks(1621001480286);
-
-
+             
             string bid = "";
             decimal avgbid = 0M;
             decimal Askbid = 0M;
@@ -212,8 +214,8 @@ namespace Crypto_Genesis.Forms
             label10.Text = "Selling Asks  : " + AsksList.Count;
             label12.Text = "Buying Bids : " + BidList.Count;
 
-            int dividerAsks = AsksList.Count / 10;
-            int dividerBids = BidList.Count / 10;
+            int dividerAsks = AsksList.Count / divideOrderBookInParts;
+            int dividerBids = BidList.Count / divideOrderBookInParts;
 
             var dividedlistAsks = new List<List<TradeResponse>>();
             var dividedlistBids = new List<List<TradeResponse>>();
@@ -278,7 +280,7 @@ namespace Crypto_Genesis.Forms
                 Label mylbl = tests.Where(lbl => lbl.Name.Equals("lblbid" + panelNumber)).First();
 
                 string txt = "";
-                txt = panelNumber + ") " + ((panelNumber == 10) ? "" : "   ");
+                txt = panelNumber + ") " + ((panelNumber >= 10) ? "" : "   ");
                 txt += sysController.removeZeroOnLast((avg / item.Count).ToString("#,##0.000000"));
 
                 while (txt.Length <= 17)
@@ -314,8 +316,7 @@ namespace Crypto_Genesis.Forms
 
         private void FuturePridict_FormClosing(object sender, FormClosingEventArgs e)
         {
-            dispatcherTimer.Tick -= new EventHandler(dispatcherTimer_Tick);
-        //    dispatcherTimer.Dispatcher.BeginInvokeShutdown(DispatcherPriority.Normal);
+            dispatcherTimer.Tick -= new EventHandler(dispatcherTimer_Tick); 
             dispatcherTimer.Stop();
         }
 
@@ -342,8 +343,7 @@ namespace Crypto_Genesis.Forms
             DataModel _model = sysController.sycnServer(link, "Unknown");
             model = _model; 
             label13.Text = "Available " + coin2;
-            label15.Text = "Available " + coin1;
-
+            label15.Text = "Available " + coin1; 
             dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);

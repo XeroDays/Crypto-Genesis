@@ -92,6 +92,14 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.lblBuyAt = new System.Windows.Forms.Label();
+            this.lblSellAt = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.cmbBuyListNo = new System.Windows.Forms.ComboBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.cmbSellListNo = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panelBids.SuspendLayout();
             this.panelAsks.SuspendLayout();
@@ -652,9 +660,9 @@
             this.lblAvailableUSDT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.lblAvailableUSDT.Font = new System.Drawing.Font("Microsoft Tai Le", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAvailableUSDT.ForeColor = System.Drawing.Color.White;
-            this.lblAvailableUSDT.Location = new System.Drawing.Point(18, 355);
+            this.lblAvailableUSDT.Location = new System.Drawing.Point(7, 355);
             this.lblAvailableUSDT.Name = "lblAvailableUSDT";
-            this.lblAvailableUSDT.Size = new System.Drawing.Size(169, 35);
+            this.lblAvailableUSDT.Size = new System.Drawing.Size(176, 35);
             this.lblAvailableUSDT.TabIndex = 39;
             this.lblAvailableUSDT.Text = "0000";
             this.lblAvailableUSDT.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -664,9 +672,9 @@
             this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.label13.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(18, 329);
+            this.label13.Location = new System.Drawing.Point(7, 329);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(169, 26);
+            this.label13.Size = new System.Drawing.Size(176, 26);
             this.label13.TabIndex = 38;
             this.label13.Text = "Available USDT";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -676,9 +684,9 @@
             this.lblAvailableCrypto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.lblAvailableCrypto.Font = new System.Drawing.Font("Microsoft Tai Le", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAvailableCrypto.ForeColor = System.Drawing.Color.White;
-            this.lblAvailableCrypto.Location = new System.Drawing.Point(193, 355);
+            this.lblAvailableCrypto.Location = new System.Drawing.Point(189, 355);
             this.lblAvailableCrypto.Name = "lblAvailableCrypto";
-            this.lblAvailableCrypto.Size = new System.Drawing.Size(158, 35);
+            this.lblAvailableCrypto.Size = new System.Drawing.Size(162, 35);
             this.lblAvailableCrypto.TabIndex = 41;
             this.lblAvailableCrypto.Text = "0000";
             this.lblAvailableCrypto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -688,9 +696,9 @@
             this.label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.label15.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(193, 329);
+            this.label15.Location = new System.Drawing.Point(189, 329);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(158, 26);
+            this.label15.Size = new System.Drawing.Size(162, 26);
             this.label15.TabIndex = 40;
             this.label15.Text = "Available Crypto";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -701,21 +709,21 @@
             this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStart.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnStart.ForeColor = System.Drawing.Color.White;
-            this.btnStart.Location = new System.Drawing.Point(18, 393);
+            this.btnStart.Location = new System.Drawing.Point(7, 393);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(117, 81);
+            this.btnStart.Size = new System.Drawing.Size(130, 81);
             this.btnStart.TabIndex = 42;
-            this.btnStart.Text = "Start";
+            this.btnStart.Text = "Start (Experimental)";
             this.btnStart.UseVisualStyleBackColor = false;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(141, 411);
+            this.label7.Location = new System.Drawing.Point(141, 405);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 13);
+            this.label7.Size = new System.Drawing.Size(37, 13);
             this.label7.TabIndex = 43;
-            this.label7.Text = "label7";
+            this.label7.Text = "Result";
             // 
             // label14
             // 
@@ -829,12 +837,100 @@
             this.label16.Text = "Select Target Coin";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label20
+            // 
+            this.label20.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(141, 421);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(67, 19);
+            this.label20.TabIndex = 46;
+            this.label20.Text = "Buy at :";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label21
+            // 
+            this.label21.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(142, 443);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(66, 19);
+            this.label21.TabIndex = 47;
+            this.label21.Text = "Sell at :";
+            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblBuyAt
+            // 
+            this.lblBuyAt.AutoSize = true;
+            this.lblBuyAt.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBuyAt.ForeColor = System.Drawing.Color.Brown;
+            this.lblBuyAt.Location = new System.Drawing.Point(209, 422);
+            this.lblBuyAt.Name = "lblBuyAt";
+            this.lblBuyAt.Size = new System.Drawing.Size(45, 19);
+            this.lblBuyAt.TabIndex = 48;
+            this.lblBuyAt.Text = "0000";
+            // 
+            // lblSellAt
+            // 
+            this.lblSellAt.AutoSize = true;
+            this.lblSellAt.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSellAt.ForeColor = System.Drawing.Color.Green;
+            this.lblSellAt.Location = new System.Drawing.Point(209, 444);
+            this.lblSellAt.Name = "lblSellAt";
+            this.lblSellAt.Size = new System.Drawing.Size(45, 19);
+            this.lblSellAt.TabIndex = 49;
+            this.lblSellAt.Text = "0000";
+            // 
+            // label22
+            // 
+            this.label22.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(586, 58);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(70, 19);
+            this.label22.TabIndex = 51;
+            this.label22.Text = "Buy List No";
+            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // cmbBuyListNo
+            // 
+            this.cmbBuyListNo.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbBuyListNo.FormattingEnabled = true;
+            this.cmbBuyListNo.Location = new System.Drawing.Point(658, 56);
+            this.cmbBuyListNo.Name = "cmbBuyListNo";
+            this.cmbBuyListNo.Size = new System.Drawing.Size(39, 24);
+            this.cmbBuyListNo.TabIndex = 50;
+            // 
+            // label23
+            // 
+            this.label23.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(699, 59);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(70, 16);
+            this.label23.TabIndex = 53;
+            this.label23.Text = "Sell List No";
+            this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // cmbSellListNo
+            // 
+            this.cmbSellListNo.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSellListNo.FormattingEnabled = true;
+            this.cmbSellListNo.Location = new System.Drawing.Point(771, 56);
+            this.cmbSellListNo.Name = "cmbSellListNo";
+            this.cmbSellListNo.Size = new System.Drawing.Size(37, 24);
+            this.cmbSellListNo.TabIndex = 52;
+            // 
             // FuturePridict
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(813, 558);
+            this.Controls.Add(this.label23);
+            this.Controls.Add(this.cmbSellListNo);
+            this.Controls.Add(this.label22);
+            this.Controls.Add(this.cmbBuyListNo);
+            this.Controls.Add(this.lblSellAt);
+            this.Controls.Add(this.lblBuyAt);
+            this.Controls.Add(this.label21);
+            this.Controls.Add(this.label20);
             this.Controls.Add(this.panelStart);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label7);
@@ -867,7 +963,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "FuturePridict";
-            this.Text = "FuturePridict";
+            this.Text = "s";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FuturePridict_FormClosing);
             this.Load += new System.EventHandler(this.FuturePridict_Load);
             this.panel1.ResumeLayout(false);
@@ -949,5 +1045,13 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label lblBuyAt;
+        private System.Windows.Forms.Label lblSellAt;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.ComboBox cmbBuyListNo;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.ComboBox cmbSellListNo;
     }
 }
