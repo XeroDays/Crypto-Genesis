@@ -15,24 +15,19 @@ namespace Crypto_Genesis.Forms
     public partial class FuturePridict : template_form
     {
 
-        //string link = "https://coinmarketcap.com/currencies/axie-infinity/";
-        string link = "https://coinmarketcap.com/currencies/DOGECOIN/";
+        string link = "https://coinmarketcap.com/currencies/axie-infinity/";
+        // string link = "https://coinmarketcap.com/currencies/DOGECOIN/";
         string TargetSymbol = "";
-        string coin1 = "DOGE";
+        string coin1 = "AXS";
         string coin2 = "USDT";
         DispatcherTimer dispatcherTimer;
         binanceApiController myApi;
         DataModel model; // this contain detail from the CoinMarketCap about the Circulating Supply and MArketCap
 
         public FuturePridict()
-        { 
+        {
             InitializeComponent();
-            TargetSymbol = coin1 + coin2;
-            myApi = new binanceApiController();
-            DataModel _model = sysController.sycnServer(link, "Unknown");
-            model = _model;
-            label13.Text = "Available " + coin2;
-            label15.Text = "Available " + coin1;
+          
             cmboxInterval.Items.Add(1);
             cmboxInterval.Items.Add(2);
             cmboxInterval.Items.Add(3);
@@ -44,7 +39,7 @@ namespace Crypto_Genesis.Forms
             cmboxInterval.Items.Add(30);
             cmboxInterval.Items.Add(60);
             cmboxInterval.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-           
+
             cmbOrderBookLimit.Items.Add(100);
             cmbOrderBookLimit.Items.Add(500);
             cmbOrderBookLimit.Items.Add(1000);
@@ -53,6 +48,8 @@ namespace Crypto_Genesis.Forms
 
             cmbOrderBookLimit.SelectedItem = 100;
             radioPrice.Checked = true;
+
+            
         }
 
         private async void updateForm()
@@ -93,7 +90,7 @@ namespace Crypto_Genesis.Forms
         {
             List<BalanceResponse> mylist = await myApi.GetCurrentBalance();
 
-           
+
 
 
             foreach (BalanceResponse item in mylist)
@@ -101,7 +98,7 @@ namespace Crypto_Genesis.Forms
                 if (item.Asset.ToLower().Equals(coin1.ToLower()))
                 {
                     lblAvailableCrypto.Text = item.Free + "";
-                  
+
                 }
 
                 if (item.Asset.ToLower().Equals(coin2.ToLower()))
@@ -113,11 +110,8 @@ namespace Crypto_Genesis.Forms
 
         private void FuturePridict_Load(object sender, EventArgs e)
         {
-            dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
-            dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
-            dispatcherTimer.Start();
-            cmboxInterval.SelectedItem = 1;
+           
+            btnStartProgram.PerformClick();
         }
 
         private void dispatcherTimer_Tick(object sender, EventArgs e)
@@ -200,7 +194,7 @@ namespace Crypto_Genesis.Forms
         private void updateOrderBookAnalysis(OrderBookResponse ssss)
         {
             List<TradeResponse> AsksList = new List<TradeResponse>();
-            
+
             List<TradeResponse> BidList = new List<TradeResponse>();
 
             if (radioPrice.Checked)
@@ -213,7 +207,7 @@ namespace Crypto_Genesis.Forms
                 AsksList = ssss.Asks.OrderBy(s => s.Quantity).ToList();
                 BidList = ssss.Bids.OrderBy(s => s.Quantity).ToList();
             }
-          
+
 
             label10.Text = "Selling Asks  : " + AsksList.Count;
             label12.Text = "Buying Bids : " + BidList.Count;
@@ -239,8 +233,8 @@ namespace Crypto_Genesis.Forms
             int panelNumber = 1;
             foreach (List<TradeResponse> item in dividedlistAsks)
             {
-                decimal avg=0m;
-                decimal qty = 0m ;
+                decimal avg = 0m;
+                decimal qty = 0m;
                 for (int i = 0; i < item.Count; i++)
                 {
                     avg += item[i].Price;
@@ -248,7 +242,7 @@ namespace Crypto_Genesis.Forms
                 }
 
                 IEnumerable<Label> tests = panelAsks.Controls.OfType<Label>();
-                Label mylbl = tests.Where(lbl=>lbl.Name.Contains("lblask"+ panelNumber)).FirstOrDefault();
+                Label mylbl = tests.Where(lbl => lbl.Name.Contains("lblask" + panelNumber)).FirstOrDefault();
 
                 string txt = "";
                 txt = panelNumber + ") " + ((panelNumber == 10) ? "" : "   ");
@@ -287,7 +281,7 @@ namespace Crypto_Genesis.Forms
                 txt = panelNumber + ") " + ((panelNumber == 10) ? "" : "   ");
                 txt += sysController.removeZeroOnLast((avg / item.Count).ToString("#,##0.000000"));
 
-                while (txt.Length<=17)
+                while (txt.Length <= 17)
                 {
                     txt += " ";
                 }
@@ -296,7 +290,7 @@ namespace Crypto_Genesis.Forms
                 if (mylbl != null)
                 {
                     mylbl.Text = txt;
-                   
+
                 }
                 panelNumber++;
             }
@@ -305,7 +299,7 @@ namespace Crypto_Genesis.Forms
         }
 
         private void cmboxInterval_SelectedIndexChanged(object sender, EventArgs e)
-        {  
+        {
             dispatcherTimer.Interval.Subtract(dispatcherTimer.Interval);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, (int)cmboxInterval.SelectedItem);
         }
@@ -317,13 +311,46 @@ namespace Crypto_Genesis.Forms
 
 
         }
-         
+
         private void FuturePridict_FormClosing(object sender, FormClosingEventArgs e)
         {
-            dispatcherTimer.Dispatcher.BeginInvokeShutdown(DispatcherPriority.Normal);
+            dispatcherTimer.Tick -= new EventHandler(dispatcherTimer_Tick);
+        //    dispatcherTimer.Dispatcher.BeginInvokeShutdown(DispatcherPriority.Normal);
             dispatcherTimer.Stop();
         }
-         
+
+        private void btnStartProgram_Click(object sender, EventArgs e)
+        {
+            if (txtCoin1.Text.Trim() != string.Empty || txtCoin2.Text.Trim() != string.Empty|| txtCoinMarketCap.Text.Trim() != string.Empty)
+            {
+                coin1 = txtCoin1.Text.Trim().ToUpper();
+                coin2 = txtCoin2.Text.Trim().ToUpper();
+                TargetSymbol = coin1 + coin2;
+                link = txtCoinMarketCap.Text.Trim();
+                startProgram();
+                panelStart.Visible = false;
+            }
+            else
+            {
+                MessageBox.Show("Please Fill the form first!","Incomplete Form Data!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void startProgram()
+        {
+            myApi = new binanceApiController();
+            DataModel _model = sysController.sycnServer(link, "Unknown");
+            model = _model; 
+            label13.Text = "Available " + coin2;
+            label15.Text = "Available " + coin1;
+
+            dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
+            dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
+            dispatcherTimer.Start();
+            cmboxInterval.SelectedItem = 1;
+
+        }
     }
 
     

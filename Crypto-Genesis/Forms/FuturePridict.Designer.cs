@@ -83,9 +83,19 @@
             this.btnStart = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.panelStart = new System.Windows.Forms.Panel();
+            this.btnStartProgram = new System.Windows.Forms.Button();
+            this.txtCoinMarketCap = new System.Windows.Forms.TextBox();
+            this.txtCoin2 = new System.Windows.Forms.TextBox();
+            this.txtCoin1 = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panelBids.SuspendLayout();
             this.panelAsks.SuspendLayout();
+            this.panelStart.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -313,9 +323,9 @@
             this.panel1.Controls.Add(this.label12);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label10);
-            this.panel1.Location = new System.Drawing.Point(371, 171);
+            this.panel1.Location = new System.Drawing.Point(354, 171);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(430, 253);
+            this.panel1.Size = new System.Drawing.Size(430, 230);
             this.panel1.TabIndex = 22;
             // 
             // panelBids
@@ -332,7 +342,7 @@
             this.panelBids.Controls.Add(this.lblbid5);
             this.panelBids.Location = new System.Drawing.Point(215, 47);
             this.panelBids.Name = "panelBids";
-            this.panelBids.Size = new System.Drawing.Size(214, 184);
+            this.panelBids.Size = new System.Drawing.Size(213, 184);
             this.panelBids.TabIndex = 35;
             // 
             // lblbid10
@@ -716,12 +726,116 @@
             this.label14.TabIndex = 44;
             this.label14.Text = "( Could be wrong due to multiple API Data. )";
             // 
+            // panelStart
+            // 
+            this.panelStart.BackColor = System.Drawing.Color.DarkGray;
+            this.panelStart.Controls.Add(this.btnStartProgram);
+            this.panelStart.Controls.Add(this.txtCoinMarketCap);
+            this.panelStart.Controls.Add(this.txtCoin2);
+            this.panelStart.Controls.Add(this.txtCoin1);
+            this.panelStart.Controls.Add(this.label19);
+            this.panelStart.Controls.Add(this.label18);
+            this.panelStart.Controls.Add(this.label17);
+            this.panelStart.Controls.Add(this.label16);
+            this.panelStart.Location = new System.Drawing.Point(49, 545);
+            this.panelStart.Name = "panelStart";
+            this.panelStart.Size = new System.Drawing.Size(556, 287);
+            this.panelStart.TabIndex = 45;
+            // 
+            // btnStartProgram
+            // 
+            this.btnStartProgram.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnStartProgram.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStartProgram.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnStartProgram.ForeColor = System.Drawing.Color.White;
+            this.btnStartProgram.Location = new System.Drawing.Point(389, 218);
+            this.btnStartProgram.Name = "btnStartProgram";
+            this.btnStartProgram.Size = new System.Drawing.Size(133, 37);
+            this.btnStartProgram.TabIndex = 43;
+            this.btnStartProgram.Text = "Start";
+            this.btnStartProgram.UseVisualStyleBackColor = false;
+            this.btnStartProgram.Click += new System.EventHandler(this.btnStartProgram_Click);
+            // 
+            // txtCoinMarketCap
+            // 
+            this.txtCoinMarketCap.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCoinMarketCap.Location = new System.Drawing.Point(197, 159);
+            this.txtCoinMarketCap.Name = "txtCoinMarketCap";
+            this.txtCoinMarketCap.Size = new System.Drawing.Size(325, 21);
+            this.txtCoinMarketCap.TabIndex = 16;
+            this.txtCoinMarketCap.Text = "https://coinmarketcap.com/currencies/axie-infinity/";
+            // 
+            // txtCoin2
+            // 
+            this.txtCoin2.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCoin2.Location = new System.Drawing.Point(197, 125);
+            this.txtCoin2.Name = "txtCoin2";
+            this.txtCoin2.Size = new System.Drawing.Size(325, 27);
+            this.txtCoin2.TabIndex = 15;
+            this.txtCoin2.Text = "USDT";
+            // 
+            // txtCoin1
+            // 
+            this.txtCoin1.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCoin1.Location = new System.Drawing.Point(197, 92);
+            this.txtCoin1.Name = "txtCoin1";
+            this.txtCoin1.Size = new System.Drawing.Size(325, 27);
+            this.txtCoin1.TabIndex = 14;
+            this.txtCoin1.Text = "AXS";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(26, 160);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(165, 19);
+            this.label19.TabIndex = 13;
+            this.label19.Text = "Coin Market Cap Link :";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(70, 130);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(121, 19);
+            this.label18.TabIndex = 12;
+            this.label18.Text = "Coin Pair (Fiat) :";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(49, 99);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(142, 19);
+            this.label17.TabIndex = 11;
+            this.label17.Text = "Coin Pair (Crypto) :";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label16
+            // 
+            this.label16.BackColor = System.Drawing.Color.Gray;
+            this.label16.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label16.Font = new System.Drawing.Font("Microsoft YaHei UI", 22F, System.Drawing.FontStyle.Bold);
+            this.label16.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label16.Location = new System.Drawing.Point(0, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(556, 46);
+            this.label16.TabIndex = 0;
+            this.label16.Text = "Select Target Coin";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // FuturePridict
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(813, 558);
+            this.Controls.Add(this.panelStart);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnStart);
@@ -762,6 +876,8 @@
             this.panelBids.PerformLayout();
             this.panelAsks.ResumeLayout(false);
             this.panelAsks.PerformLayout();
+            this.panelStart.ResumeLayout(false);
+            this.panelStart.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -824,5 +940,14 @@
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Panel panelStart;
+        private System.Windows.Forms.Button btnStartProgram;
+        private System.Windows.Forms.TextBox txtCoinMarketCap;
+        private System.Windows.Forms.TextBox txtCoin2;
+        private System.Windows.Forms.TextBox txtCoin1;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
     }
 }
